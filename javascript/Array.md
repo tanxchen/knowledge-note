@@ -104,4 +104,4 @@
 
 
 <hr>
-<img src="Array.prototype.*.png" width="600px" height="620px">
+<img src="img/Array.prototype.*.png" width="600px" height="620px">
