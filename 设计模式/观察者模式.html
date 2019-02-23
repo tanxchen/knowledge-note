@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>17-观察者模式</title>
+</head>
+
+<body>
+  <input value="btn" id="ipt" type="button">
+  <script type="text/javascript">
+    //创建观察者
+    var Observer = (function () {
+      var __messages = {};
+      return {
+        //注册信息接口
+        regist: function (type, fn) {
+          //如果此消息不存在则创建一个该消息类型
+          if (typeof __messages[type] === 'undefined') {
+            //将动作推入到该消息对应的动作执行队列中
+            __messages[type] = [fn];//--> fn转为数组
+            //console.info(__messages);
+            //如果此消息存在
+          } else {
+            //将动作推入到该消息对应的动作执行队列中
+            __messages[type].push(fn);
+            //console.info(__messages);
+          }
+        }
+        //发布信息接口
+        , fire: function (type, args) {
+          //如果该消息没有被注册，则返回
+          if (!__messages[type]) {
+            return;
+          }
+          //定义消息信息
+          var events = {
+            type: type,                //消息类型
+            args: args || {}            //消息携带数据
+          },
+            i = 0,                            //消息动作循环变量
+            len = __messages[type].length;  //消息动作长度
+          //遍历消息动作
+          for (; i < len; i++) {
+            //依次执行注册的消息对应的动作序列
+            __messages[type][i].call(this, events);
+          }
+        }
+        //移除信息接口
+        , remove: function (type, fn) {
+          //如果消息动作队列存在
+          if (__messages[type] instanceof Array) {
+            //从最后一个消息动作遍历
+            var i = __messages[type].length - 1;
+            for (; i >= 0; i--) {
+              //如果存在该动作则在消息动作序列中移除相应动作
+              __messages[type][i] === fn && __messages[type].splice(i, 1);
+            }
+          }
+        }
+      }
+    })();
+    //console.info(Observer);
+    /*Observer.regist('test',function(e1){
+        console.info(e1.__proto__);
+        console.info(e1.type,e1.args.msg);
+    });
+    Observer.fire('test',{msg:'传递参数'});*/
+    (function () {
+      var h = 555;
+      function aa(e) {
+        console.info(e);
+        console.info("a的代码", e.args.text);
+        console.info("a的代码", e.args.num);
+
+      }
+      Observer.regist('addCM', aa);
+    })();
+    (function () {
+      function bb(e) {
+        console.info('b的代码', e.args.text);
+        console.info('b的代码', e.args.num);
+      }
+      Observer.regist('addCM', bb);
+      //.regist('removeCM',bb);
+    })();
+    (function () {
+      var ipt = document.getElementById('ipt');
+      ipt.onclick = function () {
+        //Observer.fire('removeCM'{num:-1});
+        console.info(123);
+        Observer.fire('addCM', { text: "我是text内容", num: 3 });
+      }
+      /*function cc(){
+          console.info('c的代码');
+      }*/
+
+    })();
+
+
+  </script>
+
+</body>
+
+</html>
