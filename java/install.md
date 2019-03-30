@@ -6,5 +6,11 @@ brew cask install java8
 
 查看安装版本
 ```sh
- java -version
- ```
+java -version
+```
+
+修改idea里jdk配置
+```
+File -> Project Structure -> Project Settings -> Project -> Project SDK
+File -> Project Structure -> Platform Settings -> SDKs -> +
+```
