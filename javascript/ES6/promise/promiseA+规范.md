@@ -1,0 +1,1 @@
+[promiseA+规范](http://www.ituring.com.cn/article/66566)
