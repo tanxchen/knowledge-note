@@ -1,6 +1,7 @@
 **event loop是一个执行模型，在不同的地方有不同的实现。浏览器和NodeJS基于不同的技术实现了各自的Event Loop。**
 
 * 宏队列，macrotask，也叫tasks。一些异步任务的回调会依次进入macro task queue，等待后续被调用，这些异步任务包括：
+  * script
   * setTimeout
   * setInterval
   * setImmediate (Node独有)
@@ -9,7 +10,7 @@
   * UI rendering (浏览器独有)
 
 * 微队列，microtask，也叫jobs。另一些异步任务的回调会依次进入micro task queue，等待后续被调用，这些异步任务包括：
-  * process.nextTick (Node独有)
+  * process.nextTick (Node独有且优先于其他 microtask 执行)
   * Promise
   * Object.observe(弃用)
   * MutationObserver
