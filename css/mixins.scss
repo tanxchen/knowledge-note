@@ -1,0 +1,129 @@
+// 1px解决方案
+@mixin mix-1px ($top: 0, $right: 0, $bottom: 0, $left: 0, $color: #e5e5e5, $position-left: 0, $position-right: 0) {
+  position: relative;
+
+  &::before {
+    content: " ";
+    position: absolute;
+    left: $position-left;
+    right: $position-right;
+    height: 1px;
+    border: 0 solid $color;
+    color: $color;
+    background-color: $color;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+    z-index: 0;
+
+    @if ($top > 0) {
+      top: 0;
+      border-top: 1px;
+    }
+
+    @if ($right > 0) {
+      border-right-width: 1px;
+    }
+
+    @if ($bottom > 0) {
+      bottom: 0;
+      border-bottom: 1px;
+    }
+
+    @if ($left > 0) {
+      border-left-width: 1px;
+    }
+  }
+}
+
+//
+@mixin mix-onepx ($top: 0, $right: 0, $bottom: 0, $left: 0, $color: #e5e5e5) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    transform: scale(.5);
+    transform-origin: 0 0;
+    pointer-events: none;
+    box-sizing: border-box;
+    border: 0 solid $color;
+
+    @if ($top > 0) {
+      border-top-width: 1px;
+    }
+
+    @if ($right > 0) {
+      border-right-width: 1px;
+    }
+
+    @if ($bottom > 0) {
+      border-bottom-width: 1px;
+    }
+
+    @if ($left > 0) {
+      border-left-width: 1px;
+    }
+  }
+}
+
+// 清除1px
+@mixin mix-1px-clear () {
+  &::before {
+    display: none;
+  }
+}
+
+
+// 清除浮动
+@mixin mix-clearfix () {
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// 垂直居中
+@mixin mix-flex-y-center () {
+  display: flex;
+  align-items: center;
+}
+
+// 水平居中
+@mixin mix-flex-x-center () {
+  display: flex;
+  justify-content: center;
+}
+
+// 水平垂直居中
+@mixin mix-flex-center () {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// 水平垂直、两端对齐
+@mixin mix-flex-center-space-between () {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// 超出部分出省略号
+@mixin mix-text-overflow () {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+// 多行文本超出部分省略号
+@mixin ellipsis-line($line:2) {
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: $line;
+  box-orient: vertical;
+}
