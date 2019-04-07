@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ryanxchen'github contributions</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+    .calendar-graph text.month {
+      fill: #767676;
+      font-size: 10px;
+    }
+
+    .calendar-graph text.wday {
+      fill: #767676;
+      font-size: 9px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="mb-5 border border-gray-dark rounded-1 py-2">
+    <div class="js-calendar-graph is-graph-loading graph-canvas calendar-graph height-full"
+      data-graph-url="/users/ryanxchen/contributions" data-url="/ryanxchen" data-from="" data-to="">
+      <svg width="676" height="114" class="js-calendar-graph-svg">
+        <g transform="translate(16, 20)">
+          <g :transform="'translate('+13*index+', 0)'" v-for="(row, index) in initData" :key="index">
+            <rect
+              class="day"
+              width="10"
+              height="10"
+              v-for="(child, childIndex) in row"
+              :key="'child-' + childIndex"
+              :x="13 - index"
+              :y="12*(childIndex + 1)"
+              :fill="child.color"
+              :data-count="child.count"
+              :data-date="child.date"
+            />
+          </g>
+          <text x="11" y="0" class="month">Apr</text>
+          <text x="51" y="0" class="month">May</text>
+          <text x="91" y="0" class="month">Jun</text>
+          <text x="131" y="0" class="month">Jul</text>
+          <text x="181" y="0" class="month">Aug</text>
+          <text x="221" y="0" class="month">Sep</text>
+          <text x="271" y="0" class="month">Oct</text>
+          <text x="311" y="0" class="month">Nov</text>
+          <text x="351" y="0" class="month">Dec</text>
+          <text x="401" y="0" class="month">Jan</text>
+          <text x="441" y="0" class="month">Feb</text>
+          <text x="481" y="0" class="month">Mar</text>
+          <text text-anchor="start" class="wday" dx="-12" :dy="6 + 15" style="display: none;">Sun</text>
+          <text text-anchor="start" class="wday" dx="-12" :dy="18 + 15">Mon</text>
+          <text text-anchor="start" class="wday" dx="-12" :dy="30 + 15" style="display: none;">Tue</text>
+          <text text-anchor="start" class="wday" dx="-12" :dy="42 + 15">Wed</text>
+          <text text-anchor="start" class="wday" dx="-12" :dy="54 + 15" style="display: none;">Thu</text>
+          <text text-anchor="start" class="wday" dx="-12" :dy="66 + 15">Fri</text>
+          <text text-anchor="start" class="wday" dx="-12" :dy="78 + 15" style="display: none;">Sat</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      new Vue({
+        el: '#app',
+        created: function () {
+          var _this = this
+          $.ajax({
+            type: 'get',
+            url: 'https://github-contributions-api.now.sh/v1/ryanxchen',
+            data: {},
+            dataType: 'json',
+            success: function (response) {
+              var now = new Date()
+              var nowNum = +new Date(now.getFullYear(), now.getMonth(), now.getDate())
+              var t52NUm = 24 * 60 * 60 * 1000 * 7 * 52
+              var firstNum = +new Date(nowNum - t52NUm)
+              _this.initData = response.contributions.slice(0, 730).reverse().reduce(function (arr, item, index) {
+                var curTime = +new Date(item.date + ' 00:00:00')
+                if (arr.length < 54 && curTime <= nowNum && curTime >= firstNum) {
+                  if (!arr.length) {
+                    arr.push([item])
+                  } else if (arr[arr.length - 1].length < 7) {
+                    arr[arr.length - 1].push(item)
+                  } else {
+                    arr.push([item])
+                  }
+                }
+                return arr
+              }, [])
+            },
+            error: function (error) {
+              console.log(error);
+            }
+          });
+
+        },
+        data: function () {
+          return {
+            initData: {}
+          }
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>
