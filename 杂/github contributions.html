@@ -25,10 +25,7 @@
       <svg width="676" height="114" class="js-calendar-graph-svg">
         <g transform="translate(16, 20)">
           <g :transform="'translate('+13*index+', 0)'" v-for="(row, index) in initData" :key="index">
-            <rect
-              class="day"
-              width="10"
-              height="10"
+            <rect class="day" width="10" height="10"
               v-for="(child, childIndex) in row"
               :key="'child-' + childIndex"
               :x="13 - index"
@@ -38,8 +35,14 @@
               :data-date="child.date"
             />
           </g>
-          <text x="11" y="0" class="month">Apr</text>
-          <text x="51" y="0" class="month">May</text>
+          <!-- <template v-for="(item, index) in initData" :key="index">
+            <text y="0" class="month"
+              v-if="item && (index === 0 || item[index - 1].date.slice(5, 7) !== item[index].date.slice(5, 7))"
+              :x="12 + index/4 * 48"
+              >{{ '2018-09-01' | getMonthText }}</text>
+          </template> -->
+            <!-- :style="{'display': index%4 === 0 ? 'block' : 'none' }" -->
+          <!-- <text x="51" y="0" class="month">May</text>
           <text x="91" y="0" class="month">Jun</text>
           <text x="131" y="0" class="month">Jul</text>
           <text x="181" y="0" class="month">Aug</text>
@@ -49,7 +52,7 @@
           <text x="351" y="0" class="month">Dec</text>
           <text x="401" y="0" class="month">Jan</text>
           <text x="441" y="0" class="month">Feb</text>
-          <text x="481" y="0" class="month">Mar</text>
+          <text x="481" y="0" class="month">Mar</text> -->
           <text text-anchor="start" class="wday" dx="-12" :dy="6 + 15" style="display: none;">Sun</text>
           <text text-anchor="start" class="wday" dx="-12" :dy="18 + 15">Mon</text>
           <text text-anchor="start" class="wday" dx="-12" :dy="30 + 15" style="display: none;">Tue</text>
@@ -79,7 +82,7 @@
               var t52NUm = 24 * 60 * 60 * 1000 * 7 * 52
               var firstNum = +new Date(nowNum - t52NUm)
               _this.initData = response.contributions.slice(0, 730).reverse().reduce(function (arr, item, index) {
-                var curTime = +new Date(item.date + ' 00:00:00')
+                var curTime = +new Date(item.date.replace(/-/g, '/') + ' 00:00:00')
                 if (arr.length < 54 && curTime <= nowNum && curTime >= firstNum) {
                   if (!arr.length) {
                     arr.push([item])
@@ -100,7 +103,14 @@
         },
         data: function () {
           return {
-            initData: {}
+            initData: []
+          }
+        },
+        filters: {
+          getMonthText (date) {
+            console.log(date);
+            var list = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            return date && list[new Date(date.replace(/-/g, '/')).getMonth()] || ''
           }
         }
       })
