@@ -43,3 +43,12 @@ git remote prune origin --dry-run
 #清理该分支
 git remote prune origin
 ```
+
+```sh
+#git 撤回提交远端的版本
+#1. git log  查找commit的版本号
+
+#2. git reset --hard <版本号>  ， 撤回到我们需要回退的版本
+
+#3. git push origin master  --force   重新提交
+```
