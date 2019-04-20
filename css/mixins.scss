@@ -127,3 +127,10 @@
   -webkit-line-clamp: $line;
   box-orient: vertical;
 }
+
+@mixin bgimg($url: '') {
+  background-image: url($url);
+  background-position: 0 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
