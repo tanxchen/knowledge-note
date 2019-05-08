@@ -73,7 +73,7 @@
 * `some`: 有一项返回`true`，则整体为`true`
 
 
-* `every`: 有一项返回f`alse`，则整体为`false`
+* `every`: 有一项返回 `false`，则整体为`false`
 
 
 * `join`: 通过指定连接符生成字符串
