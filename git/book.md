@@ -89,3 +89,8 @@ git add README
 %s |提交说明
 
 `git log --pretty=format:"%h %s" --graph`
+
+##### 远端仓库
+  * 显示远端分支信息 `git remote show origin`
+  * 重命名远端仓库分支 `git remote rename pb paul`
+  * 删除远端仓库分支 `git remote rm paul`
