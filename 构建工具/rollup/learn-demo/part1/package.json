@@ -1,0 +1,13 @@
+{
+  "name": "first-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "rollup": "^1.11.3"
+  }
+}
