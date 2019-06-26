@@ -4,12 +4,12 @@
   "description": "parcel-middleware-demo",
   "main": "server.js",
   "scripts": {
-    "build": "rm -rf dist && parcel build ./src/views/index.html --public-url ./",
+    "build": "rm -rf dist && parcel build ./src/views/index.html --public-url ./ --no-source-maps",
     "dev": "node ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Ryanx Chen jsryanx@gmail.com",
+  "author": "Ryanx Chen <jsryanx@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "express": "^4.17.1",
