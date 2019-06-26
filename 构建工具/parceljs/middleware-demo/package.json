@@ -1,0 +1,21 @@
+{
+  "name": "parcel-middleware-demo",
+  "version": "1.0.0",
+  "description": "parcel-middleware-demo",
+  "main": "server.js",
+  "scripts": {
+    "build": "rm -rf dist && parcel build ./src/views/index.html --public-url ./",
+    "dev": "node ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ryanx Chen jsryanx@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "parcel": "^1.12.3",
+    "parcel-bundler": "^1.12.3",
+    "stylus": "^0.54.5",
+    "typescript": "^3.5.2"
+  }
+}
