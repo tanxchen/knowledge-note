@@ -5,7 +5,16 @@
 
 #### this 考察
 ```js
-
+var a = 3;
+var foo = {
+  a: 2,
+  b: function () {
+    return this.a;
+  }
+}
+var bar = foo.b;
+console.log(foo.b());
+console.log(bar());
 ```
 #### 项目里用了哪些 es6 知识点，列出来
 let、const、Map、Set、Class、解构（...）、模板字符串、=>、Promise
