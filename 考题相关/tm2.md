@@ -1,5 +1,16 @@
 #### 输入一个数，求是否是质数
 ```js
+// 穷举
+function isPrime (number) {
+  if (number < 2) return false
+  
+  for (let i = 2; i <= number - 1; i++) {
+    if (number % i === 0) {
+      return false
+    }
+  }
+  return true
+}
 ```
 #### 给一个数，格式化为万分位显示 【1234567 => 123,4567】
 
