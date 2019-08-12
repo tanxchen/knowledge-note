@@ -23,4 +23,14 @@ Function.prototype.myBind = function (context) {
     return _this.apply(context, args.concat(...arguments))
   }
 }
+// or
+function bind(fn, thisArg) {
+  return function wrap() {
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+    return fn.apply(thisArg, args);
+  };
+};
 ```
