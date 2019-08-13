@@ -1,0 +1,1 @@
+https://tangjr.gitbooks.io/c-toturials/content/array/one-dimensional-array.html
