@@ -5,8 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>mvvm</title>
+  <script src="./dist/mvvm.js"></script>
 </head>
 <body>
-  
+  <div id="app">
+    <input v-model="message">
+    <p>{{ message }}</p>
+    <button v-on:click="add">add</button>
+  </div>
+  <script>
+    new Mvvm({
+      el: '#app',
+      data () {
+        return {
+          message: 'a'
+        }
+      },
+      methods: {
+        add () {
+          this.message += '1'
+        }
+      }
+    })
+  </script>
 </body>
 </html>
