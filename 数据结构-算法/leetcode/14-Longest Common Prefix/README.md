@@ -24,6 +24,19 @@ All given inputs are in lowercase letters a-z.
  * @return {string}
  */
 var longestCommonPrefix = function(strs) {
-    
+  if(strs.length === 0) {
+    return '';
+  }
+  
+  let str = strs[0];
+  
+  for (const word of strs) {
+    while (word.indexOf(str) !== 0) {
+      str = str.substring(0, str.length - 1);
+      if (str === '')
+        break;
+    }
+  }
+  return str;
 };
 ```
