@@ -29,6 +29,6 @@ Coud you solve it without converting the integer to a string?
  * @return {boolean}
  */
 var isPalindrome = function(x) {
-  
+  return x === Number((x + '').split('').reverse().join(''));
 };
 ```
