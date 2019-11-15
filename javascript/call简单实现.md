@@ -18,6 +18,12 @@ Function.prototype.myCall = function(context) {
   if (typeof this !== 'function') {
     throw new TypeError('Error')
   }
+  /**
+   * a.call(b, 2)
+   * context = b
+   * this = function myCall () { .... }
+   * context.fn = b.fn
+   */
   context = context || window
   context.fn = this
   const args = [...arguments].slice(1)
