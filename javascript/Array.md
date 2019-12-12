@@ -13,8 +13,8 @@
     <li><i>constructor</i></li>
     <li>copyWithin <code>未用过</code></li>
     <li>entries</li>
-    <li>every <code>未用过</code></li>
-    <li>fill <code>不了解</code></li>
+    <li>every</li>
+    <li>fill <code>未用过</code></li>
     <li>filter</li>
     <li>find</li>
     <li>findIndex</li>
@@ -37,7 +37,7 @@
     <li>reverse</li>
     <li>shift</li>
     <li>slice</li>
-    <li>some <code>未用过</code></li>
+    <li>some</li>
     <li>sort</li>
     <li>splice</li>
     <li>toLocaleString</li>
