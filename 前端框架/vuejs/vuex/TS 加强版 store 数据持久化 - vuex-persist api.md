@@ -1,0 +1,1 @@
+[vuex-persist](https://github.com/championswimmer/vuex-persist#readme)
