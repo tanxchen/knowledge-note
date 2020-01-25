@@ -24,4 +24,30 @@ const rootRoute = {
 };
 ```
 
+```js
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  modules: getModules()
+})
+
+function getModules () {
+  // 自动加载 global 目录下的 .js 结尾的文件
+  const modulesContext = require.context('./modules', true, /\.js$/)
+  return modulesContext.keys().reduce((moduleObj, module) => {
+    const moduleName = module.replace('./', '').replace('.js', '')
+    const moduleConfig = modulesContext(module)
+    /**
+    * 兼容 import export 和 require module.export 两种规范
+    */
+    const ctrl = moduleConfig.default || moduleConfig
+    moduleObj[moduleName] = ctrl
+    return moduleObj
+  }, {})
+}
+```
+
 [参考link](https://github.com/wuchangming/blog/blob/master/docs/webpack/require-context-usage.md)
