@@ -18,3 +18,18 @@ window.addEventListener(
   },
   false
 )
+
+// window.addEventListener("DOMContentLoaded",
+//   function () { 
+//     function e() { 
+//       var e = window.location.href,
+//       n = document.documentElement.clientWidth < 1e3,
+//       t = ["mobile","pc"]; 
+//       -1 < e.indexOf(t[~~n]) && (
+//         window.location = e.replace(t[~~n],t[~~!n])
+//       ) 
+//     } 
+//     window.addEventListener("resize",e),
+//     e() 
+//   }
+// );
