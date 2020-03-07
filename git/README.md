@@ -51,4 +51,11 @@ git remote prune origin
 #2. git reset --hard <版本号>  ， 撤回到我们需要回退的版本
 
 #3. git push origin master  --force   重新提交
+
+#or
+#查看版本号
+#1.git reflog
+#2.git reset --hard 版本号
+#紧接着强制推送到远程分支：
+#3.git push -f
 ```
