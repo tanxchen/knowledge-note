@@ -1,0 +1,1 @@
+[link](https://github.com/shfshanyue/Daily-Question/issues/112)
