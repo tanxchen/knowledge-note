@@ -41,13 +41,27 @@ Output: true
  */
 var isValid = function(s) {
   const ss = s.split('')
+
+  if(ss.length === 0) return true
+  if(ss.length && ss.length % 2 !== 0) return false
+
   const arrLeft = []
   const arrRight = []
 
+  const L = '({['
+  const R = ')}]'
+
+  let flag = true
+
   while (ss.length) {
-    arrLeft.push(s.shift())
-    arrRight.push(s.pop())
+    arrLeft.push(ss.shift())
+    arrRight.push(ss.pop())
+  }
+  while (arrLeft.length) {
+    const x = L.indexOf(arrLeft.shift())
+    flag = (x > -1) && (x === R.indexOf(arrRight.shift()))
   }
 
+  return flag
 };
 ```
