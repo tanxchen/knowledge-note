@@ -45,23 +45,27 @@ var isValid = function(s) {
   if(ss.length === 0) return true
   if(ss.length && ss.length % 2 !== 0) return false
 
-  const arrLeft = []
-  const arrRight = []
+  const hash = {
+    ')': '(',
+    '}': '{',
+    ']': '['
+  }
 
-  const L = '({['
-  const R = ')}]'
+  let p = ss.pop()
 
-  let flag = true
+  if (!hash[p]) return false
+
+  const _ = [p]
 
   while (ss.length) {
-    arrLeft.push(ss.shift())
-    arrRight.push(ss.pop())
-  }
-  while (arrLeft.length) {
-    const x = L.indexOf(arrLeft.shift())
-    flag = (x > -1) && (x === R.indexOf(arrRight.shift()))
+    p = ss.pop()
+    if (hash[p]) {
+      _.push(p)
+    } else if (p === hash[_.pop()]) {
+      continue
+    } else return false
   }
 
-  return flag
+  return !_.length
 };
 ```
