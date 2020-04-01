@@ -4,6 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": ""
+    "dev": "NODE_ENV=development webpack",
+    "build": "NODE_ENV=production webpack"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "css-loader": "^3.4.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   }
 }
