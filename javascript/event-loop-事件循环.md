@@ -23,3 +23,7 @@
 * 宏队列macrotask一次只从队列中取一个任务执行，执行完后就去执行微任务队列中的任务；
 * 微任务队列中所有的任务都会被依次取出来执行，直到microtask queue为空；
 * UI rendering是由浏览器自行判断决定的，但是只要执行UI rendering，它的节点是在执行完所有的microtask之后，下一个macrotask之前，紧跟着执行UI render。
+
+---
+
+[link：说说事件循环机制(满分答案来了)](https://mp.weixin.qq.com/s/N98X2QMf0rEWGVdALXQKpw)
