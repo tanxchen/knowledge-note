@@ -32,12 +32,28 @@ Output: 0
  * @return {number}
  */
 var searchInsert = function(nums, target) {
-  for (let i = 0; i < nums.length; i++) {
-    const element = nums[i];
-    if (element === target || element > target) return i
-    else if (i === nums.length - 1) return nums.length
-    else if (element < target && nums[i + 1] > target) return i + 1
-  }
+  // for (let i = 0; i < nums.length; i++) {
+  //   const element = nums[i];
+  //   if (element === target || element > target) return i
+  //   else if (i === nums.length - 1) return nums.length
+  //   else if (element < target && nums[i + 1] > target) return i + 1
+  // }
+
   // better use dichotomy
+  let low = 0
+  let high = nums.length - 1
+  while (low <= high) {
+    const middle = parseInt((low + high) / 2)
+    const mVal = nums[middle]
+    if (target > mVal) {
+      low = middle + 1
+    } else if (target < mVal) {
+      high = middle - 1
+    } else {
+      return middle
+    }
+  }
+
+  return low
 };
 ```
