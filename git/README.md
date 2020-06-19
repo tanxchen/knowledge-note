@@ -59,3 +59,9 @@ git remote prune origin
 #紧接着强制推送到远程分支：
 #3.git push -f
 ```
+
+```sh
+#新建分支 并推送远端
+git checkout -b v100 # 新建
+git push --set-upstream origin v100 # 推送远端
+```
