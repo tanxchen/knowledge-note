@@ -65,3 +65,9 @@ git remote prune origin
 git checkout -b v100 # 新建
 git push --set-upstream origin v100 # 推送远端
 ```
+
+```sh
+#删除 本地 & 远端 分支
+git branch -d <BranchName> # 删除本地分支
+git push origin --delete <BranchName> # 删除远端分支
+```
