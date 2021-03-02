@@ -1,3 +1,4 @@
+```js
 render (h) {
   return h('div', {
     // Component props
@@ -44,3 +45,4 @@ render (h) {
     slot: 'slot'
   })
 }
+```
