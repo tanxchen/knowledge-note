@@ -325,7 +325,7 @@ mutations: {
 > 这里会对命名空间进行处理，假如模块 A 中有名为 add 的 mutation 函数，那么在注册过程中会变成 a/add
 
 相关 Mutation 注册代码：
-->>>>>>>>>>>>
+
 ```js
 module.forEachMutation((mutation, key) => {
   const namespacedType = namespace + key
@@ -345,7 +345,6 @@ function registerMutation (store, type, handler, local) {
   })
 }
 ```
-<<<<<<<<<<
 
 #### registerAction 的注册
 ```js
