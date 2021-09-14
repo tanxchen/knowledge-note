@@ -12,6 +12,11 @@
 
 ---
 #### npm publish 包
+* 注册好新的 npm 账号后，先进邮箱进行账号验证，通过后才能发布包。
+* 退出 npm `npm logout`
+* 发布前需先检查当前链接的仓库地址 `npm config get registry`
+  * 设置为 `npm config set registry https://registry.npmjs.org`
+  * 发布好后，还原为 `npm config set registry https://registry.npm.taobao.org`
 
 [npm publish 包](https://www.jianshu.com/p/f5d4c891830f)
 
